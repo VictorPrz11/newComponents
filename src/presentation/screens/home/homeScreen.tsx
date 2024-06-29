@@ -1,17 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import { Text, View } from 'react-native'
 
-import { globalStyles } from '../../../config/theme/GlobalStyles';
+import { colors, globalStyles } from '../../../config/theme/GlobalStyles';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title } from '../../components/ui/Title';
 import MenuItem from '../../components/ui/MenuItem';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 export const HomeScreen = () => {
   // const navigation = useNavigation()
+  const {colors} = useContext(ThemeContext)
     return (
-      <View style={globalStyles.mainContainer}>
-        <View style={globalStyles.globalMargin}>
+      <View style={{...globalStyles.mainContainer}}>
+        <View style={{...globalStyles.globalMargin,backgroundColor: colors.background}}>
           <ScrollView>
               <Title title='HOME SCREEN' safe />
               {

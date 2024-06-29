@@ -17,8 +17,8 @@ const Animation101Screen = () => {
       <Pressable onPress={()=>{
         fadeIn({})
         startMovePosition({initialPosition:-200., easing: Easing.elastic(2), duration: 1000})
-      }} style={(pressed) => ({ marginTop: 10 })}>
-        <Text>FadeIn</Text>
+      }} style={(pressed) => ({ marginTop: 10, opacity: pressed ? 0.8 : 1,})}>
+        <Text style  = {{fontSize:40,}}>FadeIn</Text>
       </Pressable>
       <Pressable onPress={()=>fadeOut({toValue:0})} style={(pressed) => ({ marginTop: 10 })}>
         <Text >FadeOut</Text>
