@@ -19,7 +19,7 @@ export const MyStack = () =>{
 
   return (
     <Stack.Navigator screenOptions={{
-      headerShown : false
+      headerShown : false,
     }}>
       
       <Stack.Screen name="Home" component={HomeScreen} />

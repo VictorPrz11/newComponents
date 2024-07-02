@@ -1,13 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native'
-import React, { PropsWithChildren } from 'react'
-import { Text, View } from 'react-native'
+import React, { PropsWithChildren, useContext, useEffect, useState } from 'react'
+import { Text, View, useColorScheme } from 'react-native'
 import { MyStack } from './presentation/navigator/stack'
 import { HomeScreen } from './presentation/screens/home/homeScreen'
 import { MyTheme } from './presentation/screens/theme/Theme'
-import { ThemeProvider } from './presentation/context/ThemeContext'
+import { LightOrDark, ThemeContext, ThemeProvider } from './presentation/context/ThemeContext'
 
 
 const AppState = ({ children }: PropsWithChildren) => {
+  
   return (
     <ThemeProvider>
       <NavigationContainer>

@@ -1,5 +1,5 @@
 import { View, Text, SectionList, useWindowDimensions } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomView from '../../components/ui/CustomView'
 import { Title } from '../../components/ui/Title';
 import Card from '../../components/ui/Card'
@@ -7,17 +7,19 @@ import Subtitle from '../../components/ui/Subtitle'
 import { colors } from '../../../config/theme/GlobalStyles';
 import Separator from '../../components/ui/Separator';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const CustomSectionListScreen = () => {
   const {height} = useWindowDimensions()
   const {top, bottom} = useSafeAreaInsets()
+  const {colors} = useContext(ThemeContext)
   return (
    <CustomView margin>
     <Title title='Custom Section List' safe/>
     <Card>
-        <SectionList sections={houses} keyExtractor={(item,index)=>item} renderItem={({item})=><Text style = {{marginVertical:2}}>{item}</Text>}
-        showsVerticalScrollIndicator={false} renderSectionHeader={({section})=><Subtitle texto={section.title} backgroundColor= {colors.cardBackground} />} stickySectionHeadersEnabled SectionSeparatorComponent={Separator} ListHeaderComponent={()=><Title title='Personajes'/>} ListFooterComponent={()=><Title title = {`Secciones ${houses.length}`} />}
-        style = {{height:height - top - 120
+        <SectionList sections={houses} keyExtractor={(item,index)=>item} renderItem={({item})=><Text style = {{marginVertical:2, color: colors.text}}>{item}</Text>}
+        showsVerticalScrollIndicator={false} renderSectionHeader={({section})=><Subtitle texto={section.title} backgroundColor= {colors.cardBackground} style = {{color:colors.text}} />} stickySectionHeadersEnabled SectionSeparatorComponent={Separator} ListHeaderComponent={()=><Title title='Personajes'/>} ListFooterComponent={()=><Title title = {`Secciones ${houses.length}`} />}
+        style = {{height:height - top - 120, 
 
         }}
         />

@@ -6,27 +6,21 @@ import Button from '../../components/ui/Button'
 import { Switch } from 'react-native-gesture-handler'
 import CustomSwitch from '../../components/ui/CustomSwitch'
 import { ThemeContext } from '../../context/ThemeContext'
-interface Props{
-    darkOn : boolean
+interface Props {
+    darkOn: boolean
 }
 const ChangeThemeScreen = () => {
 
-  
-    const {setTheme, currentTheme,colors,estado,Onoff} = useContext(ThemeContext)
+
+    const { setTheme, currentTheme, colors } = useContext(ThemeContext)
     return (
         <CustomView margin>
             <Title safe title={`Theme Screen ${currentTheme}`} />
-            <View style={
-                [styles.Contenedor,
-                { flexDirection: 'row' }
-                ]
-            }>
-                <CustomSwitch isOn= {estado} onChange={()=>{Onoff
-                }} text= {estado?'Dark On':'Dark Off'} />
-            </View>
-
-            <View style = {{height:10}}/>
-            <Text style = {{color: colors.text}}>{JSON.stringify(colors, null, 2)}</Text>
+             <CustomSwitch styleText= {{fontSize:20, fontWeight: 'bold' }} isOn = {currentTheme === 'dark' ? true : false} onChange={()=>{
+                currentTheme === 'light' ? setTheme('dark') : setTheme('light')
+             }} text= {currentTheme === 'dark' ? 'Dark On' : 'Dark Off'}/>       
+            <View style={{ height: 10 }} />
+            <Text style={{ color: colors.text }}>{JSON.stringify(colors, null, 2)}</Text>
         </CustomView>
     )
 }
@@ -35,12 +29,9 @@ export default ChangeThemeScreen
 const styles = StyleSheet.create({
     Texto: {
         fontSize: 20,
-        marginHorizontal:10,
+        marginHorizontal: 10,
         opacity: 0.7,
         fontWeight: 'bold'
     },
-    Contenedor: {
-        alignItems: 'center',
-       
-    }
+
 })
